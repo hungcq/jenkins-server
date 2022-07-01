@@ -37,7 +37,7 @@ node {
     stage('Start app') {
         script {
             name = sh (
-                script: 'docker ps -aq  --filter "ancestor=hungcq"',
+                script: 'docker ps -aq  --filter "name=hungcq"',
                 returnStdout: true
             ).trim()
             sh "docker stop ${name}"
