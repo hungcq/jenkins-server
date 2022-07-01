@@ -33,4 +33,8 @@ node {
             app.push("latest")
         }
     }
+
+    stage('Start app') {
+        docker.run('hungcq/test-node:latest')
+    }
 }
