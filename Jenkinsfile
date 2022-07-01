@@ -35,6 +35,8 @@ node {
     }
 
     stage('Start app') {
-        docker.image('hungcq/test-node:latest').run('-it -p 8000:8000')
+        sh 'docker stop $(docker ps -aq  --filter "ancestor=hungcq/test-node:latest")'
+        sh 'docker rm $(docker ps -aq  --filter "ancestor=hungcq/test-node:latest")'
+        docker.image('hungcq/test-node:latest').run('--name hungcq -it -p 8000:8000')
     }
 }
