@@ -40,8 +40,8 @@ node {
                 script: 'docker ps -aq  --filter "ancestor=hungcq/test-node:latest"',
                 returnStdout: true
             ).trim()
-            docker stop ${name}
-            docker rm ${name}
+            sh "docker stop ${name}"
+            sh "docker rm ${name}"
         }
         docker.image('hungcq/test-node:latest').run('--name hungcq -it -p 8000:8000')
     }
