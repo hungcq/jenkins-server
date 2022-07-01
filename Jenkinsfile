@@ -35,6 +35,6 @@ node {
     }
 
     stage('Start app') {
-        docker.run('hungcq/test-node:latest')
+        docker.image('hungcq/test-node:latest').run('-it -p 8000:8000')
     }
 }
